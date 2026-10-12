@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found | Halden Works</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="content center">
+    <p class="wordmark">Halden Works</p>
+    <h1>Page not found</h1>
+    <p class="lede">That page does not exist or has moved.</p>
+    <a class="button" href="{{ url_for('login') }}">Back to sign in</a>
+  </main>
+</body>
+</html>

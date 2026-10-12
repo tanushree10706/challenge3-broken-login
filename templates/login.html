@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Halden Works | Staff Portal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="split">
+    <section class="brand">
+      <p class="wordmark">Halden Works</p>
+      <h1>Staff portal</h1>
+      <p class="lede">Rosters, payslips and facility notices for Halden Works employees. This system is for authorised staff only.</p>
+      <p class="legacy">Portal build 2.3 (legacy). Scheduled for replacement.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Sign in</h2>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}<p class="notice {{ category }}" role="status">{{ message }}</p>{% endfor %}
+      {% endwith %}
+      {% if error %}<p class="notice error" role="alert">{{ error }}</p>{% endif %}
+      <form method="post" action="{{ url_for('login') }}" autocomplete="off">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" required autofocus>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required>
+        <button type="submit">Sign in</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

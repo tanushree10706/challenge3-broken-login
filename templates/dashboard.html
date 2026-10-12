@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | Halden Works</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <p class="wordmark">Halden Works</p>
+    <a class="button ghost" href="{{ url_for('logout') }}">Sign out</a>
+  </header>
+  <main class="content">
+    <h1>Welcome, {{ full_name }}</h1>
+    <p class="lede">Signed in as <strong>{{ role }}</strong>.</p>
+
+    <section class="panel wide">
+      <h2>Notices</h2>
+      <ul class="plain">
+        <li>Server room B is closed for cooling maintenance on Friday.</li>
+        <li>Payslips for this month are now available from HR.</li>
+        <li>Please retire any badge ending in -07 at reception.</li>
+      </ul>
+    </section>
+
+    {% if flag %}
+    <section class="panel wide flag">
+      <h2>Administrator console</h2>
+      <p>You reached the restricted area without knowing the password. Your flag:</p>
+      <p class="flagbox" id="flag">{{ flag }}</p>
+      <p><strong>The fix:</strong> never build SQL with string concatenation. Use placeholders so input stays data:</p>
+      <pre>conn.execute(
+    "SELECT * FROM users WHERE username = ? AND password = ?",
+    (username, password),
+)</pre>
+    </section>
+    {% else %}
+    <section class="panel wide">
+      <h2>Administrator console</h2>
+      <p class="muted">Your role does not have access to this section.</p>
+    </section>
+    {% endif %}
+  </main>
+</body>
+</html>
